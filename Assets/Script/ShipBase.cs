@@ -10,8 +10,20 @@ public abstract class ShipBase : MonoBehaviour
     private float _moveSpeed = 1.5f;
     [SerializeField]
     private int _power = 1;
+    [SerializeField]
+    private GameObject _bullet;
+    [SerializeField]
+    private Transform _muzzle;
 
     public int Hp { get => _hp; set => _hp = value; }
     public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     public int Power { get => _power; set => _power = value; }
+    public GameObject Bullet => _bullet;
+    public Transform Muzzle => _muzzle;
+    public Rigidbody2D Rb { get; set; }
+
+    public virtual void Shoot()
+    {
+        Debug.LogError("オーバーライドしていません");
+    }
 }
