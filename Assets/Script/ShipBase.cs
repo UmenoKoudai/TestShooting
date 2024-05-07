@@ -14,10 +14,13 @@ public abstract class ShipBase : MonoBehaviour
     private GameObject _bullet;
     [SerializeField]
     private Transform _muzzle;
+    [SerializeField]
+    private float _interval = 0.5f;
 
     public int Hp { get => _hp; set => _hp = value; }
     public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     public int Power { get => _power; set => _power = value; }
+    public float Interval => _interval;
     public GameObject Bullet => _bullet;
     public Transform Muzzle => _muzzle;
     public Rigidbody2D Rb { get; set; }

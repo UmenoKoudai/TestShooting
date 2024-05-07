@@ -10,15 +10,18 @@ public class Player : ShipBase
         Finish,
     }
 
-    private PlayerState _state;
+    private PlayerState _state = PlayerState.Normal;
     public PlayerState State
     {
         get => _state;
         set
         {
+            if (_state == value) return;
+            _state = value;
             switch(_state)
             {
                 case PlayerState.Normal:
+                    _normal.Enter();
                     break;
                 case PlayerState.Finish:
                     break;
@@ -26,9 +29,13 @@ public class Player : ShipBase
         }
     }
 
+    private NormalState _normal;
+    
+
     public void Init()
     {
         Rb = GetComponent<Rigidbody2D>();
+        _normal = new NormalState(this);
     }
 
     public void ManualUpdate()
@@ -36,6 +43,7 @@ public class Player : ShipBase
         switch (_state)
         {
             case PlayerState.Normal:
+                _normal.Update();
                 break;
             case PlayerState.Finish:
                 break;
