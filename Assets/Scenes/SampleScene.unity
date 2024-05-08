@@ -789,6 +789,7 @@ GameObject:
   - component: {fileID: 2088913967}
   - component: {fileID: 2088913966}
   - component: {fileID: 2088913965}
+  - component: {fileID: 2088913969}
   m_Layer: 6
   m_Name: Enemy1
   m_TagString: Untagged
@@ -925,6 +926,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2088913969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088913964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb7c83835abfbd48966b8c70bfdf650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 5
+  _moveSpeed: 1.5
+  _power: 1
+  _bullet: {fileID: 0}
+  _muzzle: {fileID: 0}
+  _interval: 0.5
+  _radian: 0.5
+  _rotateSpeedX: 0.5
+  _rotateSpeedY: 0.5
 --- !u!1 &2090759898
 GameObject:
   m_ObjectHideFlags: 0
