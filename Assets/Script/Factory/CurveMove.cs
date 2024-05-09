@@ -8,9 +8,19 @@ public class CurveMove : EnemyMoveBase
     public float Radius { get; set; }
     public float RotateX { get; set; }
     public float RotateY { get; set; }
+    public ShipBase Ship { get; set; }
+
+    private Vector3 _basePos;
+
+    public CurveMove()
+    {
+        _basePos = Ship.transform.position;
+    }
 
     public void Move()
     {
-        throw new System.NotImplementedException();
+        float x = Mathf.Cos(Time.time * RotateX);
+        float y = Mathf.Sin(Time.time * RotateY);
+        Ship.transform.position = new Vector2(_basePos.x + x * Radius, _basePos.y -= 0.001f) ;
     }
 }
