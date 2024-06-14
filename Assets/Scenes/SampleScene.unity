@@ -152,6 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0623cd88cdb7bc6438acc8ea931baa73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 0}
+  _createPos: {fileID: 0}
+  _interval: 0
+  _createCount: 0
 --- !u!4 &329334730
 Transform:
   m_ObjectHideFlags: 0
@@ -536,12 +540,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 55cfd6984fe209241a7aecbc2273cde9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f5ff38f6485b674c8948f7520520019, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.98, y: 0.75}
+  m_Size: {x: 2.02, y: 1.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -555,14 +559,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709743863}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0.01, y: -4.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1967556417}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &1709743868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,7 +651,7 @@ SpriteRenderer:
   m_Size: {x: 8.43, y: 5.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1783565764
@@ -900,12 +904,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3ea7eaf021d45ea49aa21819ac62b3a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12ea6c3917a8a6e47bf004baf28850b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.01, y: 0.74}
+  m_Size: {x: 1.72, y: 1.51}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -944,9 +948,17 @@ MonoBehaviour:
   _bullet: {fileID: 0}
   _muzzle: {fileID: 0}
   _interval: 0.5
-  _radian: 0.5
+  _debugMode: 0
+  _radius: 0.5
   _rotateSpeedX: 0.5
   _rotateSpeedY: 0.5
+  _moveBase:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &2090759898
 GameObject:
   m_ObjectHideFlags: 0
