@@ -12,7 +12,7 @@ public class CircleMove : EnemyMoveBase
 
     private Vector3 _basePos;
 
-    public CircleMove()
+    public void Init()
     {
         _basePos = Ship.transform.position;
     }
@@ -21,6 +21,8 @@ public class CircleMove : EnemyMoveBase
     {
         float x = Mathf.Cos(Time.time * RotateX);
         float y = Mathf.Sin(Time.time * RotateY);
-        Ship.transform.position = new Vector2(_basePos.x + x * Radius, _basePos.y + y * Radius - 0.001f);
+        //Ship.transform.position = new Vector2(_basePos.x + x * Radius, _basePos.y + y * Radius - 0.001f);
+        Ship.Rb.velocity = new Vector2(_basePos.x + x * Radius, _basePos.y + y * Radius) * -1;
+        Ship.Rb.velocity *= new Vector2(1, Speed);
     }
 }

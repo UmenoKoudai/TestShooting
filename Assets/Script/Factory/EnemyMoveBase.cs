@@ -6,5 +6,6 @@ public interface EnemyMoveBase
     public float RotateY { get; set; }
     public ShipBase Ship { get; set; }
 
+    public abstract void Init();
     public abstract void Move();
 }

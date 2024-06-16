@@ -10,16 +10,18 @@ public class StraightMove : EnemyMoveBase
     public float RotateY { get; set; }
     public ShipBase Ship { get; set; }
 
-    private float _moveX;
+    private Vector3 _direction;
 
 
-    public StraightMove()
+    public void Init()
     {
-
+        _direction = Ship.transform.up * -1;
+        Speed *= 10;
     }
 
     public void Move()
     {
-        Ship.transform.position = new Vector2(Ship.transform.position.x, Ship.transform.position.y - 0.0001f);
+        //Ship.transform.position = new Vector2(Ship.transform.position.x, Ship.transform.position.y - 0.0001f);
+        Ship.Rb.velocity = _direction * Speed;
     }
 }

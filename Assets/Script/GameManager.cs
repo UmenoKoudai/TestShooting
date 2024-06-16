@@ -24,16 +24,16 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        _player.Init();
-        _generator.Init();
+        if(_player != null)_player.Init();
+        if(_generator != null) _generator.Init();
     }
 
     void Update()
     {
         if(_state == GameState.GameMode)
         {
-            _player.ManualUpdate();
-            _generator.ManualUpdate();
+            if (_player != null) _player.ManualUpdate();
+            if (_generator != null) _generator.ManualUpdate();
         }
     }
 

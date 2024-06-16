@@ -4,17 +4,17 @@ using UnityEngine;
 
 public abstract class ShipBase : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, Tooltip("‘Ì—Í")]
     private int _hp = 5;
-    [SerializeField]
+    [SerializeField, Tooltip("ˆÚ“®‘¬“x")]
     private float _moveSpeed = 1.5f;
-    [SerializeField]
+    [SerializeField, Tooltip("UŒ‚—Í")]
     private int _power = 1;
-    [SerializeField]
+    [SerializeField, Tooltip("’e‚ÌPrefab")]
     private GameObject _bullet;
-    [SerializeField]
+    [SerializeField, Tooltip("’e‚ðo‚·êŠ")]
     private Transform _muzzle;
-    [SerializeField]
+    [SerializeField, Tooltip("’e‚ÌƒCƒ“ƒ^[ƒoƒ‹")]
     private float _interval = 0.5f;
 
     public int Hp { get => _hp; set => _hp = value; }

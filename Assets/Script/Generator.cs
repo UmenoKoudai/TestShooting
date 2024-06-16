@@ -5,17 +5,16 @@ public class Generator : MonoBehaviour
 {
     [SerializeField, Tooltip("エネミーのPrefab")]
     private GameObject _enemyPrefab;
-    [SerializeField, Tooltip("エネミーを出す場所")]
-    private Transform _createPos;
+    [SerializeField, Tooltip("インスタンスる範囲")]
+    private BoxCollider2D _collider;
     [SerializeField, Tooltip("インスタンスする間隔")]
     private float _interval;
     [SerializeField, Tooltip("一度にインスタンスするエネミーの数")]
     private int _createCount = 1;
 
-
-    private MovePattern _pattern = MovePattern.Straight;
-    private int _randomNum = 0;
-    float _timer;
+    private float _timer;
+    private float _colliderX;
+    private float _colliderY;
 
     enum MovePattern
     {
@@ -26,7 +25,9 @@ public class Generator : MonoBehaviour
 
     public void Init()
     {
-
+        _timer = _interval;
+        _colliderX = _collider.size.x / 2;
+        _colliderY = _collider.size.y / 2;
     }
 
     public void ManualUpdate()
@@ -36,14 +37,16 @@ public class Generator : MonoBehaviour
         {
             for (int i = 0; i < _createCount; i++)
             {
-                _randomNum = UnityEngine.Random.Range(0, Enum.GetNames(typeof(MovePattern)).Length);
-                _pattern = (MovePattern)Enum.ToObject(typeof(MovePattern), _randomNum);
-                var enemy = GameObject.Instantiate(_enemyPrefab, _createPos.position, Quaternion.identity);
-                var script = enemy.GetComponent<Enemy>();
+                int randomNum = UnityEngine.Random.Range(0, Enum.GetNames(typeof(MovePattern)).Length);
+                float x = UnityEngine.Random.Range(-_colliderX, _colliderX);
+                float y = UnityEngine.Random.Range(-_colliderY, _colliderY);
+                var createArea = new Vector2(transform.position.x + x, transform.position.y + y);
+                MovePattern pattern = (MovePattern)Enum.ToObject(typeof(MovePattern), randomNum);
+                var script = Instantiate(_enemyPrefab, createArea, Quaternion.identity).GetComponent<Enemy>();
                 script.RotateX = UnityEngine.Random.Range(0f, 5f);
                 script.RotateY = UnityEngine.Random.Range(0f, 5f);
-                script.Radius = UnityEngine.Random.Range(0f, 5f);
-                switch (_pattern)
+                script.Radius = UnityEngine.Random.Range(1f, 2.5f);
+                switch (pattern)
                 {
                     case MovePattern.Circle:
                         script.MovePattern = new CircleMove();

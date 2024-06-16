@@ -10,7 +10,7 @@ public class CurveMove : EnemyMoveBase
 
     private Vector3 _basePos;
 
-    public CurveMove()
+    public void Init()
     {
         _basePos = Ship.transform.position;
     }
@@ -19,6 +19,8 @@ public class CurveMove : EnemyMoveBase
     {
         float x = Mathf.Cos(Time.time * RotateX);
         float y = Mathf.Sin(Time.time * RotateY);
-        Ship.transform.position = new Vector2(_basePos.x + x * Radius, _basePos.y -= 0.001f) ;
+        //Ship.transform.position = new Vector2(_basePos.x + x * Radius, _basePos.y -= 0.001f);
+        Ship.Rb.velocity = new Vector2(_basePos.x + x * Radius, _basePos.y) * -1;
+        Ship.Rb.velocity *= new Vector2(1, Speed);
     }
 }
