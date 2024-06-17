@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : ShipBase
 {
+    [Header("スコア関係")]
+    [SerializeField, Tooltip("ゲット出来るスコア")]
+    private int _score = 100;
     [Header("デバック用")]
     [SerializeField, Tooltip("デバックするときにオンにする")]
     private bool _debugMode = false;
@@ -63,5 +64,11 @@ public class Enemy : ShipBase
         {
             MovePattern.Move();
         }
+    }
+
+    public override void Damage(int damage)
+    {
+        GameManager.Instance.AddScore(_score);
+        Destroy(this);
     }
 }

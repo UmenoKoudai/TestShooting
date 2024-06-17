@@ -4,10 +4,34 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public class ScoreData
+    {
+        public ScoreData(string name, int score)
+        {
+            Name = name;
+            Score = score;
+        }
+
+        public string Name { get; set; }
+        public int Score { get; set; }
+    }
+
     [SerializeField]
     private Player _player;
     [SerializeField]
     private Generator _generator;
+
+    private ScoreData _scoreDate;
+
+    private static GameManager _instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null) _instance = FindObjectOfType<GameManager>();
+            return _instance;
+        }
+    }
 
     private GameState _state;
     public GameState State 
@@ -20,6 +44,19 @@ public class GameManager : MonoBehaviour
     {
         GameMode,
         ResultMode,
+    }
+
+    private void Awake()
+    {
+        if(FindObjectsOfType<GameManager>().Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _scoreDate = new ScoreData("ƒoƒ“ƒ^ƒ“‘¾˜Y", 0);
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     void Start()
@@ -40,5 +77,10 @@ public class GameManager : MonoBehaviour
     public void StateChange(GameState change)
     {
         State = change;
+    }
+
+    public void AddScore(int getScore)
+    {
+        _scoreDate.Score += getScore;
     }
 }

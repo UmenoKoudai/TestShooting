@@ -27,6 +27,11 @@ public abstract class ShipBase : MonoBehaviour
 
     public virtual void Shoot()
     {
-        Debug.LogError("オーバーライドしていません");
+        Debug.LogError("Shoot関数オーバーライドしていません");
+    }
+
+    public virtual void Damage(int damage)
+    {
+        Debug.LogError("Damage関数をオーバーロードしていません");
     }
 }
