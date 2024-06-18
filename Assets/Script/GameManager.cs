@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     private Player _player;
     [SerializeField]
     private Generator _generator;
+    [SerializeField, Tooltip("スコアのテキスト")]
+    private Text _scoreText;
 
     private ScoreData _scoreDate;
 
@@ -67,7 +70,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(_state == GameState.GameMode)
+        _scoreText.text = _scoreDate.Score.ToString();
+        if (_state == GameState.GameMode)
         {
             if (_player != null) _player.ManualUpdate();
             if (_generator != null) _generator.ManualUpdate();
